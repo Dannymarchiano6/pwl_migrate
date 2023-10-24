@@ -6,18 +6,21 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public function up()
-    {
+    public function up() {
         Schema::create('mahasiswa', function (Blueprint $table) {
             $table->char('npm', 10)->primary();
             $table->char('nidn', 10);
             $table->string('nama', 50);
-            $table->foreign('nidn')->references('nidn')->on('dosen');
+
+            $table->foreign('nidn')
+                ->references('nidn')
+                ->on('dosen')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists('mahasiswa');
     }
 };
