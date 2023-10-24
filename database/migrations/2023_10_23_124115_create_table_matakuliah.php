@@ -6,8 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public function up()
-    {
+    public function up() {
         Schema::create('matakuliah', function (Blueprint $table) {
             $table->char('kode_matakuliah', 8)->primary();
             $table->string('nama_matakuliah', 50);
@@ -15,8 +14,7 @@ return new class extends Migration
         });
     }
 
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists('matakuliah');
     }
 };
